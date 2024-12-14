@@ -14,47 +14,46 @@
     <div class="flex justify-center items-center min-h-screen">
         <div class="relative p-6 w-full max-w-2xl">
             <div class="relative p-8 bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Editar Producto</h2>
-                <form class="space-y-6" method="post" th:action="@{/GuardarEdicion}" th:object="${restaurante}">
+                <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Editar Proveedor</h2>
+                <form class="space-y-6" method="post" th:action="@{/GuardarEdicion}" th:object="${proveedor}">
                     <input type="hidden" th:field="*{id}">
                     <div class="grid gap-6 mb-6 grid-cols-2">
                         <div class="col-span-2">
-                            <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" th:field="*{nombre}"
+                            <label for="nombre"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                            <input type="text" id="nombre" th:field="*{nombre}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Nombre del restaurante" required>
+                                placeholder="Nombre del Proveedor" required>
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="dni" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
-                            <input type="text" name="dni" id="dni" th:field="*{dni}"
+                            <label for="direccion"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion</label>
+                            <input type="text" id="direccion" th:field="*{direccion}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="DNI del restaurante" required>
+                                required placeholder="Direccion proveedor">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="fechaReserva" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Reserva</label>
-                            <input type="date" name="fechaReserva" id="fechaReserva" th:field="*{fechaReserva}"
+                            <label for="telefono"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefono</label>
+                            <input type="number" id="telefono" th:field="*{telefono}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                required>
+                                placeholder="Número de telefono" required>
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="nroPersonas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número de Personas</label>
-                            <input type="number" name="nroPersonas" id="nroPersonas" th:field="*{nroPersonas}"
+                            <label for="email"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
+                            <input type="email" id="email" th:field="*{email}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Número de personas" required>
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="sede" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sede</label>
-                            <input type="number" name="sede" id="sede" th:field="*{sede}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Sede" required>
+                                placeholder="Correo" required>
                         </div>
                     </div>
-                    <button type="submit"
+                    <button type="submit "
                         class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-6 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <i class="fas fa-user-edit mr-2"></i>
                         Guardar
                     </button>
                 </form>
-                
+
             </div>
         </div>
     </div>

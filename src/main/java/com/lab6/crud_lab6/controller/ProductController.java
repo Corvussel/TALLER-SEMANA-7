@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
-import com.lab6.crud_lab6.model.Restaurante;
-import com.lab6.crud_lab6.repository.RestauranteService;
+import com.lab6.crud_lab6.model.Proveedor;
+import com.lab6.crud_lab6.repository.ProveedorService;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,43 +18,45 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-private RestauranteService restauranteService;
+    private ProveedorService proveedorService;
 
-@GetMapping("/listaRestaurantes")
-public String listarRestaurantes(Model model) {
-    List<Restaurante> restaurantes = restauranteService.ObtenerRestaurantes();
-    model.addAttribute("restaurantes", restaurantes);
-    model.addAttribute("restaurante", new Restaurante());
-    return "listaRestaurantes";
-}
-
-@PostMapping("/RegistrarRestaurante")
-public String RegistrarRestaurante(@ModelAttribute Restaurante restaurante) {
-    restauranteService.RegistrarRestaurante(restaurante);
-    return "redirect:/listaRestaurantes";
-}
-
-@GetMapping("/EditarRestaurante/{id}")
-public String EditarRestaurante(@PathVariable("id") Long id, Model model) {
-    Optional<Restaurante> restaurante = restauranteService.buscarRestaurante(id);
-    if (restaurante.isPresent()) {
-        model.addAttribute("restaurante", restaurante.get());
-        return "EditarRestaurante";
-    } else {
-        return "redirect:/listaRestaurantes";
+    @GetMapping("/listaProveedores")
+    public String showProveedores(Model model) {
+        List<Proveedor> proveedores = proveedorService.ObtenerProvedores();
+        model.addAttribute("proveedores", proveedores);
+        model.addAttribute("proveedor", new Proveedor());
+        return "proveedores";
     }
-}
 
-@PostMapping("/GuardarEdicion")
-public String GuardarEdicion(@ModelAttribute Restaurante restaurante) {
-    restauranteService.EditarRestaurante(restaurante);
-    return "redirect:/listaRestaurantes";
-}
+    
+    @PostMapping("/RegistrarProveedor")
+    public String RegistrarRestaurante(@ModelAttribute Proveedor proveedor, Model model) {
+        proveedorService.RegistrarProveedor(proveedor);
+        model.addAttribute("proveedor", proveedor);
+        return "redirect:/listaProveedores";
+    }
 
-@GetMapping("/EliminarRestaurante/{id}")
-public String EliminarRestaurante(@PathVariable("id") Long id) {
-    restauranteService.EliminarRestaurante(id);
-    return "redirect:/listaRestaurantes";
-}
+    @GetMapping("/EditarProveedor/{id}")
+    public String EditarRestaurante(@PathVariable("id") Long id, Model model) {
+        Optional<Proveedor> proveedor = proveedorService.BuscarProveedor(id);
+        if (proveedor.isPresent()) {
+            model.addAttribute("proveedor", proveedor.get());
+            return "formulario-proveedor";
+        } else {
+            return "redirect:/listaProveedores";
+        }
+    }
+
+    @PostMapping("/GuardarEdicion")
+    public String GuardarEdicion(@ModelAttribute Proveedor proveedor) {
+        proveedorService.EditarProveedor(proveedor);
+        return "redirect:/listaProveedores";
+    }
+
+    @GetMapping("/EliminarProveedor/{id}")
+    public String EliminarRestaurante(@PathVariable("id") Long id) {
+        proveedorService.EliminarProveedor(id);
+        return "redirect:/listaProveedores";
+    }
 
 }
