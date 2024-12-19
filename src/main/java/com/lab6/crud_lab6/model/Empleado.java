@@ -1,28 +1,26 @@
 package com.lab6.crud_lab6.model;
 
- 
-import java.sql.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id; 
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 import lombok.Data;
 
 @Entity
-@Data  
-public class Proveedor {
-    
-    @Id 
+@Data
+public class Empleado {
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     private Long id;
 
     private String nombre;
 
-    private String direccion;
+    @Column(name = "numero_celular")
+    private String numeroCelular;
 
-    private String telefono;
+    private String contrasena;
 
-    private String email; 
+    private String email;
 }
